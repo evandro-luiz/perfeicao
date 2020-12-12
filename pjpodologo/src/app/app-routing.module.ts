@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'cadpodologo',
     loadChildren: () => import('./cadpodologo/cadpodologo.module').then( m => m.CadpodologoPageModule)
+  },
+  {
+    path: 'perfilpodologo',
+    loadChildren: () => import('./perfilpodologo/perfilpodologo.module').then( m => m.PerfilpodologoPageModule)
   }
 ];
 
