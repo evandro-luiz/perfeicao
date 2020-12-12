@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-loginpodologo',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loginpodologo.page.scss'],
 })
 export class LoginpodologoPage implements OnInit {
-
-  constructor() { }
+  constructor( private navCtrl : NavController) { }
 
   ngOnInit() {
   }
-
+  cadpodologo(){
+    this.navCtrl.navigateForward(['/cadastropodologo']);
+}
+esqsenha(){
+  this.navCtrl.navigateForward(['/esq-senha']);
+}
+login(){
+  this.navCtrl.navigateForward(['/homepodologo']);
+}
 }

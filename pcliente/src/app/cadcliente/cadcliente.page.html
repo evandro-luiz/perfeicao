@@ -1,9 +1,27 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>cadcliente</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
+
+
+
+    
+  <ion-img style="margin-top:2%" class="img-responsive" src="/assets/logo1.jpg"></ion-img>
+  <div class="ion-text-center" style="margin-top: 4%;">
+    <ion-title>Cadastro de Cliente</ion-title>
+  </div>
+    <ion-item>
+      
+      <ion-label position="floating"><ion-icon name="at-outline"></ion-icon> Email</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      
+      <ion-label position="floating"><ion-icon name="lock-closed-outline"></ion-icon> Senha</ion-label>
+      
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    
+    <ion-button style="margin-top: 5%;" color="success"(click)="fincadcliente()" expand="full">Avançar</ion-button>
 
 </ion-content>
