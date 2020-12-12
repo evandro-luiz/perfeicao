@@ -1,9 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>homepodologo</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<ion-buttons slot="start">
+  <ion-menu-button></ion-menu-button>
+</ion-buttons>
 <ion-content>
+
+  <div class="ion-text-center" style="margin-top: 4%;">
+
+    <h5>Agenda</h5>
+  </div>
+
+  <ion-list>
+    <ion-item >
+      <ion-label>Claudio</ion-label>
+      <ion-button (click)="visualizar(cliente)">Visualizar</ion-button>
+    </ion-item>
+
+    <ion-item >
+      <ion-label>Maria</ion-label>
+      <ion-button (click)="visualizar(cliente)">Visualizar</ion-button>
+    </ion-item>
+
+    <ion-item > 
+      <ion-label>Julia</ion-label>
+      <ion-button (click)="visualizar(cliente)">Visualizar</ion-button>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
