@@ -13,10 +13,10 @@ export class LoginclientePage implements OnInit {
   ngOnInit() {
   }
   cadcliente(){
-    this.navCtrl.navigateForward(['/cadastrocliente']);
+    this.navCtrl.navigateForward(['/cadcliente']);
   }
   esqsenha(){
-    this.navCtrl.navigateForward(['/esq-senha']);
+    this.navCtrl.navigateForward(['/esqsenha']);
   }
   login(){
     this.navCtrl.navigateForward(['/homecliente']);

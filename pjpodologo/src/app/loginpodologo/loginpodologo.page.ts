@@ -12,10 +12,10 @@ export class LoginpodologoPage implements OnInit {
   ngOnInit() {
   }
   cadpodologo(){
-    this.navCtrl.navigateForward(['/cadastropodologo']);
+    this.navCtrl.navigateForward(['/cadpodologo']);
 }
 esqsenha(){
-  this.navCtrl.navigateForward(['/esq-senha']);
+  this.navCtrl.navigateForward(['/esqsenha']);
 }
 login(){
   this.navCtrl.navigateForward(['/homepodologo']);

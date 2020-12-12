@@ -13,7 +13,7 @@ export class CadpodologoPage implements OnInit {
   ngOnInit() {
   }
   cad(){
-    this.navCtrl.navigateForward(['/fincadpodologo']);
+    this.navCtrl.navigateForward(['/loginpodologo']);
 }
 
 }

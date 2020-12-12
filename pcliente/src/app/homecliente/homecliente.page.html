@@ -2,36 +2,38 @@
   <ion-menu-button></ion-menu-button>
 </ion-buttons>
 <ion-content>
-  <form>
-    <ion-searchbar #nome></ion-searchbar>
-  </form>
-  <ion-button (click)="pesquisar()">Pesquisar</ion-button>
+  <ion-row>
+  
+    <ion-col size="7">
+      <ion-item>
+      <ion-label  position="floating">Busca</ion-label>
+      <ion-input type="text" #username ></ion-input>
+    </ion-item>
+    </ion-col>
+    <ion-col size="3">
+      <ion-button style="margin-top: 15%;" (click)="pesquisar()">Pesquisar</ion-button>
+    </ion-col>
+  </ion-row>
+   
+  
+
+ 
   <ion-img style="margin-top:2%" class="img-responsive" src="/assets/Google-Maps-740x388.jpg"></ion-img>
   
+  <ion-list>
+    <ion-item >
+      <ion-label>Claudio</ion-label>
+      <ion-button (click)="avancar()">Selecionar</ion-button>
+    </ion-item>
   
-  <ion-item>
-    <ion-label position="floating">Selecione uma data</ion-label>
-    <ion-datetime displayFormat="DD/MM/YYYY" min="2020-11-01" max="2030-12-31" value="2020-12-07T15:01:30.789"></ion-datetime>
-  </ion-item>
+    <ion-item >
+      <ion-label>Maria</ion-label>
+      <ion-button (click)="avancar()">Selecionar</ion-button>
+    </ion-item>
   
+    <ion-item > 
+      <ion-label>Julia</ion-label>
+      <ion-button (click)="avancar()">Selecionar</ion-button>
+    </ion-item>
+  </ion-list>
   
-  
-  
-  
-  <ion-item>
-    <ion-label>Selecione a Hora</ion-label>
-    <ion-select interface="popover">
-      <ion-select-option value="09:00">09:00</ion-select-option>
-      <ion-select-option value="10:00">10:00</ion-select-option>
-      <ion-select-option value="11:00">11:00</ion-select-option>
-      <ion-select-option value="12:00">12:00</ion-select-option>
-      <ion-select-option value="13:00">13:00</ion-select-option>
-      <ion-select-option value="14:00">14:00</ion-select-option>
-      <ion-select-option value="15:00">15:00</ion-select-option>
-      <ion-select-option value="16:00">16:00</ion-select-option>
-      <ion-select-option value="17:00">17:00</ion-select-option>
-      <ion-select-option value="18:00">18:00</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-button style="margin-top: 2%;" color="tertiary" expand="block"  (click)="visualizar()">Finalizar</ion-button>
-  </ion-content>
