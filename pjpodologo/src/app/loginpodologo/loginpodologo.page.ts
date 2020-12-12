@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginpodologoPage implements OnInit {
 
-  constructor() { }
+  constructor( private navCtrl : NavController) { }
 
   ngOnInit() {
   }
-
+  cadpodologo(){
+    this.navCtrl.navigateForward(['/cadastropodologo']);
+}
+esqsenha(){
+  this.navCtrl.navigateForward(['/esq-senha']);
+}
+login(){
+  this.navCtrl.navigateForward(['/homepodologo']);
+}
 }

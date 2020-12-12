@@ -1,9 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>loginpodologo</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+ 
+
+
+
+  <ion-img style="margin-top:2%" class="img-responsive" src="/assets/logo1.jpg"></ion-img>
+  <div class="ion-text-center" style="margin-top: 4%;">
+    <ion-title>Login do Podólogo</ion-title>
+  </div>
+<ion-item>
+  <ion-label  position="floating"><ion-icon name="at-outline"></ion-icon> E-mail</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating"><ion-icon name="lock-closed-outline"></ion-icon> Senha</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<ion-button color="success" style="margin-bottom: 3%" expand="block" (click)="login()" >Entrar</ion-button>
+<ion-button color="tertiary" expand="block" (click)="esqsenha()">Esqueceu sua senha?</ion-button>
+<ion-text style="margin-left: 46%">OU</ion-text>
+<ion-button color="medium" style="margin-bottom: 10%" expand="block" (click)="cadpodologo()" >Cadastre-se</ion-button>
 
 </ion-content>
