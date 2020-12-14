@@ -18,10 +18,24 @@ export class LoginpodologoPage implements OnInit {
     private template : TemplateService
     ) { this.iniciarForm(); }
 
+<<<<<<< HEAD
+  constructor( private navCtrl : NavController) { }
+=======
+>>>>>>> upstream/master
 
   ngOnInit() {
   }
   cadpodologo(){
+<<<<<<< HEAD
+    this.navCtrl.navigateForward(['/cadastropodologo']);
+}
+esqsenha(){
+  this.navCtrl.navigateForward(['/esq-senha']);
+}
+login(){
+  this.navCtrl.navigateForward(['/homepodologo']);
+}
+=======
     this.navCtrl.navigateForward(['/cadpodologo']);
 }
 esqsenha(){
@@ -55,4 +69,5 @@ esqsenha(){
       password: ['', [Validators.required, Validators.minLength(13), Validators.maxLength(16)]]
     })
   }
+>>>>>>> upstream/master
 }
