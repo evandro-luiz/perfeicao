@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-homepodologo',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepodologoPage implements OnInit {
 
-  constructor() { }
+  constructor( private navCtrl : NavController) { }
 
   ngOnInit() {
   }
-
+  visualizar(){
+    this.navCtrl.navigateForward(['/consulta']);
+}
 }
