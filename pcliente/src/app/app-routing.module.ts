@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'consulta',
     loadChildren: () => import('./consulta/consulta.module').then( m => m.ConsultaPageModule)
+  },
+  {
+    path: 'sair',
+    loadChildren: () => import('./sair/sair.module').then( m => m.SairPageModule)
   }
 ];
 

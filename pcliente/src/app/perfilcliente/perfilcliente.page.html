@@ -3,43 +3,43 @@
   <div class="ion-text-center" style="margin-top: 4%;">
   <h3>Seu Perfil</h3>
   </div>
+  <form [formGroup]="formGroup">
   <ion-item>
     <ion-label position="floating"><ion-icon name="person-circle-outline"> </ion-icon> Nome</ion-label>
-    <ion-input type="text" ></ion-input>
+    <ion-input type="text" formControlName="nome" ></ion-input>
   </ion-item>
   
    
   <ion-item>
     <ion-label position="floating"><ion-icon name="call-outline"></ion-icon> Número</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" formControlName="numero"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating"><ion-icon name="document-text-outline"></ion-icon> CPF</ion-label>
-    <ion-input type="text" ></ion-input>
+    <ion-input type="text" formControlName="cpf" ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating"><ion-icon name="send-sharp"></ion-icon> CEP</ion-label>
-    <ion-input type="text" ></ion-input>
+    <ion-input type="text" formControlName="cep"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating"> <ion-icon name="business-outline"></ion-icon> Estado</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" formControlName="estado"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating"><ion-icon name="business-sharp"></ion-icon> Cidade</ion-label>
-    <ion-input type="text" ></ion-input>
+    <ion-input type="text" formControlName="cidade"></ion-input>
   </ion-item>
   
   <ion-item>
     <ion-label position="floating"><ion-icon name="home-sharp"></ion-icon> Endereço</ion-label>
-    <ion-input type="text" ></ion-input>
+    <ion-input type="text" formControlName="endereco"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating"><ion-icon name="add-outline"></ion-icon> Complemento</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" formControlName="complemento"></ion-input>
   </ion-item>
-  
 
-  <ion-button style="margin-top: 5%;" color="success"(click)="cadastrar()" expand="full">Cadastrar</ion-button>
-
+  <ion-button style="margin-top: 5%;" color="success"(click)="atualizar()" expand="full">Finalizar</ion-button>
+</form>
 </ion-content>
