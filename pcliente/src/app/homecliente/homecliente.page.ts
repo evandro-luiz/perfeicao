@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Cliente } from '../model/cliente';
 import { ClienteService } from '../service/cliente.service';
+import { PodologoService } from '../service/podologo.service';
 
 
 @Component({
@@ -15,10 +16,10 @@ export class HomeclientePage implements OnInit {
   lista : Cliente[] = [];
 
   constructor(private navCtrl : NavController,
-    private clienteServ : ClienteService) { }
+    private podologoServ : PodologoService) { }
 
   ngOnInit() {
-    this.clienteServ.listaDeClientes().subscribe(response=>{
+    this.podologoServ.listaDePodologos().subscribe(response=>{
       // O servidor respondeu
       
       this.lista = response;
@@ -30,11 +31,11 @@ export class HomeclientePage implements OnInit {
     })
   }
   avancar(cliente){
-    this.navCtrl.navigateForward(['/consulta']);
+    this.navCtrl.navigateForward(['/consulta',cliente.id]);
   }
   pesquisar(){
     console.log("Busca por: "+this.local.value)
-    this.clienteServ.buscaPorlocal(this.local.value).subscribe(response=>{
+    this.podologoServ.buscaPorlocal(this.local.value).subscribe(response=>{
       this.lista = [];
       this.lista = response;
     });

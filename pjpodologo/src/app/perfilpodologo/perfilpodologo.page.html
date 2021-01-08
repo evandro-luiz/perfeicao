@@ -1,46 +1,85 @@
-<ion-content>
-  <div class="ion-text-center" style="margin-top: 4%;">
-    <h3>Seu Perfil</h3>
+<ion-header style="background-color: #00FA9A;">
+  <div class="ion-text-center" >
+    <h3 >Seus Dados</h3>
     </div>
-    <form [formGroup]="formGroup">
-  <ion-item>
+</ion-header>
+<ion-content  class="fundo">
+  
+    <form [formGroup]="formGroup" style="background-color: #00FA9A;">
+      <ion-row>
+        <ion-col>
+          <p>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
+        </ion-col>
+        <ion-col>
+          <ion-avatar>
+            <img  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"> 
+          </ion-avatar>
+        </ion-col>
+        <ion-col>
+     
+        </ion-col>
+      </ion-row>
+      <ion-button style="margin-top: 5%;"  color="tertiary"(click)="atualizar()" expand="full">Mudar Foto de Perfil</ion-button>
+
+  <ion-item style="border-radius: 8%;">
     <ion-label position="floating"><ion-icon name="person-circle-outline"> </ion-icon>Nome</ion-label>
     <ion-input type="text" formControlName="nome" ></ion-input>
-  </ion-item>
- 
-  <ion-item>
-    <ion-label position="floating"><ion-icon name="call-outline"></ion-icon> Número</ion-label>
-    <ion-input type="text" formControlName="numero"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating"><ion-icon name="document-text-outline"></ion-icon> CPF</ion-label>
-    <ion-input type="text"  formControlName="cpf"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating"><ion-icon name="send-sharp"></ion-icon> CEP</ion-label>
-    <ion-input type="text" formControlName="cep"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating"> <ion-icon name="business-outline"></ion-icon> Estado</ion-label>
-    <ion-input type="text" formControlName="estado"></ion-input>
-  </ion-item>
-  <ion-item>
+  </ion-item >
+  <br>
+  <ion-row>
+    <ion-col>
+      <ion-item style="border-radius: 8%;">
+        <ion-label position="floating"><ion-icon name="call-outline"></ion-icon> Telefone</ion-label>
+        <ion-input type="text" formControlName="numero"></ion-input>
+      </ion-item>
+      <br>
+    </ion-col>
+    <ion-col>
+      <ion-item style="border-radius: 8%;">
+        <ion-label position="floating"><ion-icon name="document-text-outline"></ion-icon> CPF</ion-label>
+        <ion-input type="text"  formControlName="cpf"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row>
+    <ion-col>
+      <ion-item style="border-radius: 8%;">
+        <ion-label position="floating"><ion-icon name="send-sharp"></ion-icon> CEP</ion-label>
+        <ion-input type="text" formControlName="cep"></ion-input>
+      </ion-item>   
+    </ion-col>
+    <ion-col>
+      <ion-item style="border-radius: 8%;">
+        <ion-label position="floating"> <ion-icon name="business-outline"></ion-icon> Estado</ion-label>
+        <ion-input type="text" formControlName="estado"></ion-input>
+      </ion-item>
+      <br>
+    </ion-col>
+   
+  </ion-row>
+  
+  
+  <ion-item style="border-radius: 8%;">
     <ion-label position="floating"><ion-icon name="business-sharp"></ion-icon> Cidade</ion-label>
     <ion-input type="text" formControlName="cidade" ></ion-input>
   </ion-item>
-  
-  <ion-item>
+  <br>
+  <ion-item style="border-radius: 8%;">
     <ion-label position="floating"><ion-icon name="home-sharp"></ion-icon> Endereço</ion-label>
     <ion-input type="text" formControlName="endereco" ></ion-input>
   </ion-item>
+  <br>
   <ion-item>
     <ion-label position="floating"><ion-icon name="add-outline"></ion-icon> Complemento</ion-label>
     <ion-input type="text" formControlName="complemento"></ion-input>
   </ion-item>
-  <ion-item>
+  <br>
+  <ion-item style="border-radius: 8%;">
     <ion-label position="floating"><ion-icon name="school-outline"></ion-icon> Nível de Escolaridade</ion-label>
     <ion-input type="text" formControlName="nivelescola"></ion-input>
   </ion-item>
+  
   <ion-button (click)="atualizar()" style="margin-top: 5%;" color="success" expand="full">Finalizar</ion-button>
 </form>
 </ion-content>

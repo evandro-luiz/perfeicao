@@ -15,17 +15,17 @@ export class AppComponent implements OnInit {
     {
       title: 'Inicio',
       url: '/homepodologo',
-      icon: 'mail'
+      icon: 'home'
     },
     {
-      title: 'Seu Perfil',
+      title: 'Seus dados',
       url: '/perfilpodologo',
-      icon: 'paper-plane'
+      icon: 'people'
     },
     {
       title: 'Sair',
       url: '/sair',
-      icon: 'paper-plane'
+      icon: 'exit'
     }
     
   ];

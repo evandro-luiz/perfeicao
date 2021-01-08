@@ -4,20 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ConsultaPageRoutingModule } from './consulta-routing.module';
+import { DetconsultaPageRoutingModule } from './detconsulta-routing.module';
 
-import { ConsultaPage } from './consulta.page';
+import { DetconsultaPage } from './detconsulta.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConsultaPageRoutingModule,
+    DetconsultaPageRoutingModule,
     ReactiveFormsModule
-
-
   ],
-  declarations: [ConsultaPage]
+  declarations: [DetconsultaPage]
 })
-export class ConsultaPageModule {}
+export class DetconsultaPageModule {}

@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 import { Cliente } from '../model/cliente';
+import { Podologo } from '../model/podologo';
 
 @Injectable()
-export class ClienteService {
-    cliente: Cliente = new Cliente();
+export class PodologoService {
+    podologo: Podologo = new Podologo();
 
     constructor(private firestore: AngularFirestore) {
 
     }
 
-    listaDeClientes(): Observable<any> {
+    listaDePodologos(): Observable<any> {
 
         // Observable -> Aguardar resposta do servidor
         return from(new Observable(observe => { // converter para Observable
@@ -19,15 +20,15 @@ export class ClienteService {
             // this.firestore.collection('cliente') -> Selecionar a coleção no Firestore
             // .snapshotChanges().subscribe -> Tentar buscar no servidor
             // response -> dados baixados do servidor, os clientes
-            this.firestore.collection('perfil-cliente').snapshotChanges().subscribe(response => {
+            this.firestore.collection('perfil-podologo').snapshotChanges().subscribe(response => {
                 // transformar response em array de clientes
-                let lista: Cliente[] = [];
+                let lista: Podologo[] = [];
                 response.map(obj => {
                     // será repetido para cada registro, cada registro do Firestore se chama obj
-                    let cliente: Cliente = new Cliente();
-                    cliente.setData(obj.payload.doc.data());// obj.payload.doc.data() -> Dados do cliente
-                    cliente.id = obj.payload.doc.id; // inserindo ID
-                    lista.push(cliente); // adicionando o cliente na lista // push é adicionar
+                    let podologo: Podologo = new Podologo();
+                    podologo.setData(obj.payload.doc.data());// obj.payload.doc.data() -> Dados do cliente
+                    podologo.id = obj.payload.doc.id; // inserindo ID
+                    lista.push(podologo); // adicionando o cliente na lista // push é adicionar
                 });
                 observe.next(lista);
             })
@@ -132,13 +133,13 @@ export class ClienteService {
     // carregar o perfil do cliente (qualquer coleção)
     buscaPerfilPorId(uid: any): Observable<any> { // uid -> authenticator
         return from(new Observable(observe => {
-            this.firestore.collection('perfil-cliente').doc(uid).snapshotChanges().subscribe(response => {
+            this.firestore.collection('perfil-podologo').doc(uid).snapshotChanges().subscribe(response => {
                 if (response.payload.exists !== false) {
 
-                    let cliente: Cliente = new Cliente();
-                    cliente.id = response.payload.id;
-                    cliente.setData(response.payload.data());
-                    observe.next(cliente);
+                    let podologo: Podologo = new Podologo();
+                    podologo.id = response.payload.id;
+                    podologo.setData(response.payload.data());
+                    observe.next(podologo);
                 }
 
             }, (err) => {

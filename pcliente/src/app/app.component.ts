@@ -15,18 +15,25 @@ export class AppComponent implements OnInit {
     {
       title: 'Inicio',
       url: '/homecliente',
-      icon: 'mail'
+      icon: 'home'
     },
     {
       title: 'Seu Perfil',
       url: '/perfilcliente',
-      icon: 'paper-plane'
+      icon: 'person'
+    },{
+      title: 'Suas Consultas',
+      url: '/vconsulta',
+      icon: 'heart-circle'
+
     },
     {
       title: 'Sair',
       url: '/sair',
-      icon: 'paper-plane'
+      icon: 'exit'
+     
     }
+    
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 

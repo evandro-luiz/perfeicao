@@ -14,6 +14,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 import { ClienteService } from './service/cliente.service';
+import { PodologoService } from './service/podologo.service';
+import { ConsultaService } from './service/consulta.service';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { ClienteService } from './service/cliente.service';
     StatusBar,
     SplashScreen,
     ClienteService,
+    PodologoService,
+    ConsultaService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
