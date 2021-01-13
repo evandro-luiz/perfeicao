@@ -4,22 +4,15 @@
     </div>
 </ion-header>
 <ion-content  class="fundo">
+  <img style="border-radius: 100%;" src="{{imagem}}" width="100%" />
+  <ion-item>
+
+    <input type="file" (change)="enviarArquivo($event)" />
+
+  </ion-item>
   
-    <form [formGroup]="formGroup" style="background-color: #00FA9A;">
-      <ion-row>
-        <ion-col>
-          <p>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
-        </ion-col>
-        <ion-col>
-          <ion-avatar>
-            <img  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"> 
-          </ion-avatar>
-        </ion-col>
-        <ion-col>
+    <form [formGroup]="formGroup" >
      
-        </ion-col>
-      </ion-row>
-      <ion-button style="margin-top: 5%;"  color="tertiary"(click)="atualizar()" expand="full">Mudar Foto de Perfil</ion-button>
 
   <ion-item style="border-radius: 8%;">
     <ion-label position="floating"><ion-icon name="person-circle-outline"> </ion-icon>Nome</ion-label>

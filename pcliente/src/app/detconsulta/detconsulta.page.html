@@ -1,25 +1,30 @@
 
-<ion-content>
-  <ion-item>
-    <ion-label>Dados do Podólogo</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>nomePodólogo: {{consulta.nomepodologo}}</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>idpodologo: {{consulta.idpodologo}}</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>nomecliente: {{consulta.nomecliente}}</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>idcliente: {{consulta.idcliente}}</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>hora: {{consulta.hora}}</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>data: {{consulta.data}}</ion-label>
-  </ion-item>
+
+  <ion-header style="background-color: #00FA9A;">
+  <div class="ion-text-center" >
+    <h3 >Detalhes da Consulta</h3>
+    </div>
+  </ion-header>
+  <ion-content><img style="border-radius: 100%;" src="{{imagem}}" width="100%" />
+  
+    <ion-item>
+      <ion-label>Podologo: {{podologo.nome}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>CEP: {{podologo.cep}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cidade: {{podologo.cidade}}</ion-label>
+    </ion-item>
+   
+    <ion-item>
+      <ion-label>Endereço: {{podologo.endereco}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Complemento: {{podologo.complemento}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Telefone: {{podologo.numero}}</ion-label>
+    </ion-item>
   
 </ion-content>

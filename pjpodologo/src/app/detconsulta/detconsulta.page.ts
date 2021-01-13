@@ -18,9 +18,9 @@ import { TemplateService } from '../service/template.service';
   styleUrls: ['./detconsulta.page.scss'],
 })
 export class DetconsultaPage implements OnInit {
-
   imagem: any;
   iduser: any = "";
+  
   id: string = "";
   podologo: Podologo = new Podologo();
   cliente: Cliente = new Cliente();
@@ -53,8 +53,9 @@ export class DetconsultaPage implements OnInit {
         })
         this.clienteServ.buscaPerfilPorId(this.consulta.idcliente).subscribe(Response=>{
           this.cliente=Response;
-          this.downloadImage();
+          
           this.iniciarForm();
+          this.downloadImage();
         })
       })
       })
@@ -79,30 +80,29 @@ export class DetconsultaPage implements OnInit {
     })
   }
  
-
-enviarArquivo(event) {
-  //capturando imagem
-  this.imagem = event.srcElement.files[0];
-  //enviar para storage
-  this.uploadStorage();
-}
+  enviarArquivo(event) {
+    //capturando imagem
+    this.imagem = event.srcElement.files[0];
+    //enviar para storage
+    this.uploadStorage();
+  }
 
 uploadStorage(){
 //envia ao firebase(storage)
 this.fireStorage.storage.ref().child(`perfil/${this.consulta.idcliente}.jpg`).put(this.imagem).then(response=>{
-console.log("foto foi blz");
-this.downloadImage();
+  console.log("foto foi blz");
+ this.downloadImage();
 });
 }
 downloadImage(){
 
-this.fireStorage.storage.ref().child(`perfilp/${this.consulta.idpodologo}.jpg`)
+  this.fireStorage.storage.ref().child(`perfil/${this.consulta.idcliente}.jpg`)
 
-  .getDownloadURL().then(response=>{
+    .getDownloadURL().then(response=>{
 
-    this.imagem = response;
+      this.imagem = response;
 
-  })
+    })
 
 }
 

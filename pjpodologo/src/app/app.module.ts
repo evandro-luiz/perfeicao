@@ -14,6 +14,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 import { PodologoService } from './service/podologo.service';
+import { ConsultaService } from './service/consulta.service';
+import { ClienteService } from './service/cliente.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,13 +29,17 @@ import { PodologoService } from './service/podologo.service';
     AngularFireModule.initializeApp(environment.firebase),
     HttpClientModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    ReactiveFormsModule
+    
 
   ],
   providers: [
     StatusBar,
     SplashScreen,
     PodologoService,
+    ConsultaService,
+    ClienteService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

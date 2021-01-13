@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'sair',
     loadChildren: () => import('./sair/sair.module').then( m => m.SairPageModule)
+  },
+  {
+    path: 'detconsulta/:id',
+    loadChildren: () => import('./detconsulta/detconsulta.module').then( m => m.DetconsultaPageModule)
   }
 ];
 

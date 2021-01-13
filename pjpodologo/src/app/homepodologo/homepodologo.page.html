@@ -10,28 +10,20 @@
     </div>
    
 </ion-header>
-<ion-content>
 
+  
   <div class="ion-text-center" style="margin-top: 4%;">
 
     <h5>Agenda</h5>
   </div>
-
+  <ion-content>
   <ion-list>
-    <ion-item >
-      <ion-label>Claudio</ion-label>
-      <ion-button (click)="visualizar(cliente)">Visualizar</ion-button>
-    </ion-item>
-
-    <ion-item >
-      <ion-label>Maria</ion-label>
-      <ion-button (click)="visualizar(cliente)">Visualizar</ion-button>
-    </ion-item>
-
-    <ion-item > 
-      <ion-label>Julia</ion-label>
-      <ion-button (click)="visualizar(cliente)">Visualizar</ion-button>
-    </ion-item>
+    <ion-item *ngFor="let consulta of lista">
+      <ion-label> {{consulta.nomecliente}} </ion-label>
+       <ion-label> {{consulta.nomepodologo}} </ion-label>
+       <ion-label> {{consulta.data}} </ion-label>
+       <ion-button (click)="visualizar(consulta)"> Visualizar </ion-button> 
+     </ion-item>
   </ion-list>
 
 </ion-content>

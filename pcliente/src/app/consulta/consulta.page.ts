@@ -35,16 +35,19 @@ export class ConsultaPage implements OnInit {
               
   ngOnInit() {
     this.route.paramMap.subscribe(url=>{
-    let id = url.get('id');
-    this.podologoServ.buscaPerfilPorId(id).subscribe(Response=>{
+    let idp = url.get('id');
+    this.podologoServ.buscaPerfilPorId(idp).subscribe(Response=>{
       this.podologo=Response;
       
       this.iniciarForm();
     })
     })
-    this.route.paramMap.subscribe(url=>{
-      let id = url.get('id');
-      this.clienteServ.buscaPerfilPorId(id).subscribe(Response=>{
+    this.auth.currentUser.then(url=>{
+
+    
+    
+      let idc = url.uid;
+      this.clienteServ.buscaPerfilPorId(idc).subscribe(Response=>{
         this.cliente=Response;
         
         this.iniciarForm();
