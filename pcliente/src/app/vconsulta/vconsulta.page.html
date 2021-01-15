@@ -3,7 +3,9 @@
   <div>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-
+      <div class="ion-text-center" >
+        <h3 >Suas Consultas</h3>
+        </div>
 
     </ion-buttons>
 
@@ -12,10 +14,20 @@
 </ion-header>
 
 <ion-content>
+
   <ion-item *ngFor="let consulta of lista">
- <ion-label> {{consulta.nomecliente}} </ion-label>
-  <ion-label> {{consulta.nomepodologo}} </ion-label>
-  <ion-label> {{consulta.data}} </ion-label>
-  <ion-button (click)="visualizar(consulta)"> Visualizar </ion-button> 
-</ion-item>
+    <ion-avatar slot="start">
+      <img  src="{{imagem}}" width="100%" />
+    </ion-avatar>
+    <ion-label>
+      <h2>{{consulta.nomepodologo}}</h2>
+      <h3>{{consulta.data}}</h3>
+      <h3>{{consulta.hora}}</h3>
+    </ion-label>
+      
+  <ion-button (click)="visualizar(consulta)"> Visualizar </ion-button>
+  </ion-item>
+
+  
+
 </ion-content>

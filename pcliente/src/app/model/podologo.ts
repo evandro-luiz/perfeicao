@@ -12,7 +12,7 @@ export class Podologo{
 
 
     setData(objFirebase : any){
-       
+        this.id = objFirebase.id;
         this.nome = objFirebase.nome;
         this.numero = objFirebase.numero;
         this.cpf = objFirebase.cpf;

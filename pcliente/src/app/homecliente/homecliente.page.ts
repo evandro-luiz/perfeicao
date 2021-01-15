@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { NavController } from '@ionic/angular';
 import { Cliente } from '../model/cliente';
+import { Podologo } from '../model/podologo';
 import { ClienteService } from '../service/cliente.service';
 import { PodologoService } from '../service/podologo.service';
 
@@ -12,11 +14,14 @@ import { PodologoService } from '../service/podologo.service';
 })
 export class HomeclientePage implements OnInit {
   @ViewChild("local") local; 
-
-  lista : Cliente[] = [];
+  imagem: any;
+  lista : Podologo[] = [];
+  podologo: Podologo = new Podologo();
+  idp: string="";
 
   constructor(private navCtrl : NavController,
-    private podologoServ : PodologoService) { }
+    private podologoServ : PodologoService,
+    public fireStorage : AngularFireStorage) { }
 
   ngOnInit() {
     this.podologoServ.listaDePodologos().subscribe(response=>{
@@ -24,11 +29,14 @@ export class HomeclientePage implements OnInit {
       
       this.lista = response;
      
-
-      
+      console.log(response);
+      this.idp = response;
+      console.log(this.idp);
     },err=>{
       // erro
     })
+    
+    this.downloadImage();
   }
   avancar(cliente){
     this.navCtrl.navigateForward(['/consulta',cliente.id]);
@@ -40,4 +48,16 @@ export class HomeclientePage implements OnInit {
       this.lista = response;
     });
   }
+  downloadImage(){
+
+    this.fireStorage.storage.ref().child(`perfilp/${this.idp}.jpg`)
+    
+      .getDownloadURL().then(response=>{
+    
+        this.imagem = response;
+    
+      })
+    
+    }
+    
 }
