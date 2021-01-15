@@ -16,6 +16,7 @@
 <ion-content>
 
   <ion-item *ngFor="let consulta of lista">
+<<<<<<< HEAD
     <ion-avatar slot="start">
       <img  src="{{imagem}}" width="100%" />
     </ion-avatar>
@@ -30,4 +31,11 @@
 
   
 
+=======
+ <ion-label> {{consulta.nomecliente}} </ion-label>
+  <ion-label> {{consulta.nomepodologo}} </ion-label>
+  <ion-label> {{consulta.data}} </ion-label>
+  <ion-button (click)="visualizar(consulta)"> Ver + </ion-button> 
+</ion-item>
+>>>>>>> upstream/master
 </ion-content>
