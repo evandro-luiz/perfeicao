@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+<ion-buttons slot="start">
+  <ion-menu-button></ion-menu-button>
+</ion-buttons>
+<ion-content>
+  <h1>teste1</h1>
+=======
 <ion-header style="background-color: #00FA9A;">
   
   <div>
@@ -10,6 +17,7 @@
     </div>
    
 </ion-header>
+>>>>>>> upstream/master
 
   
   <div class="ion-text-center" style="margin-top: 4%;">
@@ -18,12 +26,29 @@
   </div>
   <ion-content>
   <ion-list>
+<<<<<<< HEAD
+    <ion-item >
+      <ion-label>jessica</ion-label>
+      <ion-button (click)="visualizar(cliente)">Visualizar</ion-button>
+    </ion-item>
+
+    <ion-item >
+      <ion-label>Maria</ion-label>
+      <ion-button (click)="visualizar(cliente)">Visualizar</ion-button>
+    </ion-item>
+
+    <ion-item > 
+      <ion-label>Julia</ion-label>
+      <ion-button (click)="visualizar(cliente)">Visualizar</ion-button>
+    </ion-item>
+=======
     <ion-item *ngFor="let consulta of lista">
       <ion-label> {{consulta.nomecliente}} </ion-label>
        <ion-label> {{consulta.nomepodologo}} </ion-label>
        <ion-label> {{consulta.data}} </ion-label>
        <ion-button (click)="visualizar(consulta)"> Visualizar </ion-button> 
      </ion-item>
+>>>>>>> upstream/master
   </ion-list>
 
 </ion-content>
