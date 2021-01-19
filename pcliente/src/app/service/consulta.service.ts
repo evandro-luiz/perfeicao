@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { from, Observable } from 'rxjs';
 import { Consulta } from '../model/consulta';
 
@@ -7,7 +8,8 @@ import { Consulta } from '../model/consulta';
 export class ConsultaService {
     consulta: Consulta = new Consulta();
 
-    constructor(private firestore: AngularFirestore) {
+    constructor(private firestore: AngularFirestore,
+        public fireStorage: AngularFireStorage) {
 
     }
     cadastrar(consulta: any): Observable<any> {
@@ -31,15 +33,26 @@ export class ConsultaService {
             // this.firestore.collection('cliente') -> Selecionar a coleção no Firestore
             // .snapshotChanges().subscribe -> Tentar buscar no servidor
             // response -> dados baixados do servidor, os clientes
-            this.firestore.collection("consulta",ref => ref.where("idcliente","==",id)).snapshotChanges().subscribe(response => {
+            this.firestore.collection("consulta", ref => ref.where("idcliente", "==", id)).snapshotChanges().subscribe(response => {
                 // transformar response em array de clientes
                 let lista: Consulta[] = [];
                 response.map(obj => {
                     // será repetido para cada registro, cada registro do Firestore se chama obj
                     let consulta: Consulta = new Consulta();
-                    consulta.setData(obj.payload.doc.data());// obj.payload.doc.data() -> Dados do cliente
+                    consulta.setData(obj.payload.doc.data());// obj.payload.doc.data() -> Dados do consulta
                     consulta.id = obj.payload.doc.id;
-                    lista.push(consulta); // adicionando o cliente na lista // push é adicionar
+                    this.fireStorage.storage.ref().child(`perfilp/${consulta.idpodologo}.jpg`).getDownloadURL().then(response => {
+
+                        consulta.imagem = response;
+                        lista.push(consulta);
+                    }).catch(response => {
+                        this.fireStorage.storage.ref().child(`perfilp/perfil.jfif`).getDownloadURL().then(response => {
+                            consulta.imagem = response;
+                            lista.push(consulta);
+                        })
+                        // adicionando o cliente na lista // push é adicionar          
+                    })
+                    console.log(consulta.idpodologo)
                 });
                 observe.next(lista);
             })

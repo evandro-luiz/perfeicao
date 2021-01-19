@@ -9,7 +9,7 @@ export class Podologo{
     endereco: string;
     complemento: string;
     nivelescola: string;
-
+    imagem: string;
 
     setData(objFirebase : any){
         this.id = objFirebase.id;

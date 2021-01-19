@@ -8,7 +8,7 @@ export class Cliente{
     cidade: string;
     endereco: string;
     complemento: string;
-
+    imagem : string;
 
     setData(objFirebase : any){
         this.nome = objFirebase.nome;

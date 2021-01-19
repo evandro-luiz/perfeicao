@@ -50,7 +50,7 @@ export class VconsultaPage implements OnInit {
         })
         this.clienteServ.buscaPerfilPorId(this.consulta.idcliente).subscribe(Response=>{
           this.cliente=Response;
-          this.downloadImage();
+          
           this.iniciarForm();
         })
       })
@@ -65,7 +65,7 @@ export class VconsultaPage implements OnInit {
       
       this.lista = response;
      
-      this.downloadImage();
+      
       
     },err=>{
       // erro

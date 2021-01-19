@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { from, Observable } from 'rxjs';
 import { Cliente } from '../model/cliente';
 import { Podologo } from '../model/podologo';
@@ -8,7 +9,8 @@ import { Podologo } from '../model/podologo';
 export class PodologoService {
     podologo: Podologo = new Podologo();
 
-    constructor(private firestore: AngularFirestore) {
+    constructor(private firestore: AngularFirestore,
+        public fireStorage: AngularFireStorage) {
 
     }
 
@@ -28,7 +30,17 @@ export class PodologoService {
                     let podologo: Podologo = new Podologo();
                     podologo.setData(obj.payload.doc.data());// obj.payload.doc.data() -> Dados do cliente
                     podologo.id = obj.payload.doc.id; // inserindo ID
-                    lista.push(podologo); // adicionando o cliente na lista // push é adicionar
+                    this.fireStorage.storage.ref().child(`perfilp/${obj.payload.doc.id}.jpg`).getDownloadURL().then(response => {
+
+                        podologo.imagem = response;
+                        lista.push(podologo);
+                    }).catch(response => {
+                        this.fireStorage.storage.ref().child(`perfilp/perfil.jfif`).getDownloadURL().then(response => {
+                            podologo.imagem = response;
+                            lista.push(podologo);
+                        })
+                    })
+                    // adicionando o cliente na lista // push é adicionar
                 });
                 observe.next(lista);
             })

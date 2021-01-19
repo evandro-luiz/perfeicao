@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
@@ -20,7 +21,8 @@ export class ConsultaPage implements OnInit {
  podologo : Podologo = new Podologo();
  cliente : Cliente = new Cliente();
  formGroup: FormGroup;
- 
+ imagem: any;
+ iduser: any = "";
   constructor(private formBuilder : FormBuilder, 
     private podologoServ : PodologoService,
     private consultaServ : ConsultaService,
@@ -28,15 +30,16 @@ export class ConsultaPage implements OnInit {
               private template : TemplateService,
               private navCtrl : NavController,
               private clienteServ : ClienteService,
-              private auth : AngularFireAuth) { 
+              private auth : AngularFireAuth,
+              public fireStorage : AngularFireStorage) { 
                 this.iniciarForm();
                
               }
               
   ngOnInit() {
     this.route.paramMap.subscribe(url=>{
-    let idp = url.get('id');
-    this.podologoServ.buscaPerfilPorId(idp).subscribe(Response=>{
+    this.iduser = url.get('id');
+    this.podologoServ.buscaPerfilPorId(this.iduser).subscribe(Response=>{
       this.podologo=Response;
       
       this.iniciarForm();
@@ -53,7 +56,7 @@ export class ConsultaPage implements OnInit {
         this.iniciarForm();
       })
       })
-      
+      this.downloadImage();
   }
   iniciarForm() {
     this.formGroup = this.formBuilder.group({
@@ -76,4 +79,18 @@ export class ConsultaPage implements OnInit {
         this.navCtrl.navigateRoot(['homecliente']);
     })
  }
+ downloadImage(){
+
+  this.fireStorage.storage.ref().child(`perfilp/${this.iduser}.jpg`)
+
+    .getDownloadURL().then(response=>{
+
+      this.imagem = response;
+
+    })
+
+}
+
+
+
 }

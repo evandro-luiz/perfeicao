@@ -38,8 +38,8 @@ export class HomeclientePage implements OnInit {
     
     this.downloadImage();
   }
-  avancar(cliente){
-    this.navCtrl.navigateForward(['/consulta',cliente.id]);
+  avancar(podologo){
+    this.navCtrl.navigateForward(['/consulta',podologo.id]);
   }
   pesquisar(){
     console.log("Busca por: "+this.local.value)

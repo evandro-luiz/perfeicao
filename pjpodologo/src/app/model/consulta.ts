@@ -6,6 +6,7 @@ export class Consulta{
     idpodologo: string;
     nomecliente: string;
     nomepodologo: string;
+    imagem: string;
 
     setData(objFirebase : any){
         this.id = objFirebase.id;

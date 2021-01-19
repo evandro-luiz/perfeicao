@@ -23,7 +23,7 @@ export class PerfilclientePage implements OnInit {
     private navCtrl: NavController,
     private template: TemplateService,
     private auth: AngularFireAuth,
-    public fireStorage : AngularFireStorage) { // AngularFireAuth -> pegar dados do usuario logado
+    public fireStorage: AngularFireStorage) { // AngularFireAuth -> pegar dados do usuario logado
 
     this.iniciarForm(); // obrigatório inicializar o formulário
 
@@ -82,25 +82,30 @@ export class PerfilclientePage implements OnInit {
     this.uploadStorage();
   }
 
-uploadStorage(){
-//envia ao firebase(storage)
-this.fireStorage.storage.ref().child(`perfil/${this.iduser}.jpg`).put(this.imagem).then(response=>{
-  console.log("foto foi blz");
- this.downloadImage();
-});
+  uploadStorage() {
+    //envia ao firebase(storage)
+    this.fireStorage.storage.ref().child(`perfil/${this.iduser}.jpg`).put(this.imagem).then(response => {
+      console.log("foto foi blz");
+      this.downloadImage();
+    });
+  }
+  downloadImage() {
+
+    this.fireStorage.storage.ref().child(`perfil/${this.iduser}.jpg`)
+
+      .getDownloadURL().then(response => {
+
+        this.imagem = response;
+
+      }).catch(response => {
+        this.fireStorage.storage.ref().child(`perfilp/perfil.jfif`).getDownloadURL().then(response => {
+          this.imagem = response;
+
+        })
+      })
+      }
+
+
 }
-downloadImage(){
 
-  this.fireStorage.storage.ref().child(`perfil/${this.iduser}.jpg`)
-
-    .getDownloadURL().then(response=>{
-
-      this.imagem = response;
-
-    })
-
-}
-
-}
-
-
+  

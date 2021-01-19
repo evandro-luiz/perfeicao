@@ -96,11 +96,15 @@ downloadImage(){
 
       this.imagem = response;
 
+    }).catch(response => {
+      this.fireStorage.storage.ref().child(`perfilp/perfil.jfif`).getDownloadURL().then(response => {
+        this.imagem = response;
+
+      })
     })
+    }
+
 
 }
-
-}
-
 
 
