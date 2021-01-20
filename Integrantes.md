@@ -9,5 +9,5 @@ Lucas de Souza Gonzaga de Oliveira,
 
 
 
-Paginas em .html feitas por Phelipe, Mateus e lucas;
+Paginas em .html feitas por Phelipe, Mateus e Lucas de Souza;
 Paginas .ts Feitas por Evandro Luiz e Lucas Lopes;
