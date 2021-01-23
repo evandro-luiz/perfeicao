@@ -11,5 +11,7 @@ export class EsqsenhaPage implements OnInit {
 
   ngOnInit() {
   }
-
+esqueceuSenha(){
+  
+}
 }
