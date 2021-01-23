@@ -46,6 +46,7 @@ export class HomeclientePage implements OnInit {
     this.podologoServ.buscaPorlocal(this.local.value).subscribe(response=>{
       this.lista = [];
       this.lista = response;
+      
     });
   }
   downloadImage(){
