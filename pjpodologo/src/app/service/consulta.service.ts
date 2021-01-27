@@ -33,7 +33,7 @@ export class ConsultaService {
             // this.firestore.collection('cliente') -> Selecionar a coleção no Firestore
             // .snapshotChanges().subscribe -> Tentar buscar no servidor
             // response -> dados baixados do servidor, os clientes
-            this.firestore.collection("consulta",ref => ref.where("idpodologo","==",id)).snapshotChanges().subscribe(response => {
+            this.firestore.collection("consulta", ref => ref.where("idpodologo", "==", id)).snapshotChanges().subscribe(response => {
                 // transformar response em array de clientes
                 let lista: Consulta[] = [];
                 response.map(obj => {
@@ -59,21 +59,22 @@ export class ConsultaService {
 
         }))
     }
-    buscaConsultaPorId(uid: any): Observable<any> { // uid -> authenticator
-        return from(new Observable(observe => {
-            this.firestore.collection('consulta').doc(uid).snapshotChanges().subscribe(response => {
-                if (response.payload.exists !== false) {
+    
+     buscaConsultaPorId(uid: any): Observable<any> { // uid -> authenticator
+         return from(new Observable(observe => {
+             this.firestore.collection('consulta').doc(uid).snapshotChanges().subscribe(response => {
+                 if (response.payload.exists !== false) {
+ 
+                     let consulta: Consulta = new Consulta();
+                     consulta.id = response.payload.id;
+                     consulta.setData(response.payload.data());
+                     observe.next(consulta);
+                 }
 
-                    let consulta: Consulta = new Consulta();
-                    consulta.id = response.payload.id;
-                    consulta.setData(response.payload.data());
-                    observe.next(consulta);
-                }
+             }, (err) => {
+                 observe.error("Erro ao buscar o ID!");
+             })
 
-            }, (err) => {
-                observe.error("Erro ao buscar o ID!");
-            })
-
-        }));
-    }
+         }));
+     }
 }

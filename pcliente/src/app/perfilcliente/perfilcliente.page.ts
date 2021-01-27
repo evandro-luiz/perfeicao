@@ -18,47 +18,47 @@ export class PerfilclientePage implements OnInit {
   formGroup: FormGroup;
   perfil: Cliente = new Cliente(); // Declarar a classe onde se encontra dados do perfil
   iduser: any = "";
-  constructor(private formBuilder: FormBuilder,
-    private clienteServ: ClienteService,
-    private navCtrl: NavController,
-    private template: TemplateService,
-    private auth: AngularFireAuth,
-    public fireStorage: AngularFireStorage) { // AngularFireAuth -> pegar dados do usuario logado
+   constructor(private formBuilder: FormBuilder,
+     private clienteServ: ClienteService,
+     private navCtrl: NavController,
+     private template: TemplateService,
+     private auth: AngularFireAuth,
+     public fireStorage: AngularFireStorage) { // AngularFireAuth -> pegar dados do usuario logado
+ 
+     this.iniciarForm(); // obrigatório inicializar o formulário
 
-    this.iniciarForm(); // obrigatório inicializar o formulário
-
-    this.auth.currentUser.then(response => { // auth.currentUser -> Obten dados do usuario
-      this.iduser = response.uid;
-      //donwload imagem
-      this.downloadImage();
-      this.clienteServ.buscaPerfilPorId(response.uid).subscribe(response => {
-        // se houver o perfil, colocar os dados para a variavel perfil
-        this.perfil = response; // dados preenchidos
-        this.iniciarForm(); // atualizar os dados do formulário
-
-      }
+     this.auth.currentUser.then(response => { // auth.currentUser -> Obten dados do usuario
+       this.iduser = response.uid;
+       //donwload imagem
+       this.downloadImage();
+       this.clienteServ.buscaPerfilPorId(response.uid).subscribe(response => {
+         // se houver o perfil, colocar os dados para a variavel perfil
+         this.perfil = response; // dados preenchidos
+         this.iniciarForm(); // atualizar os dados do formulário
+ 
+       }
 
       )
     })
 
   }
 
-  ngOnInit() {
-  }
-  iniciarForm() {
-    this.formGroup = this.formBuilder.group({
-      nome: [this.perfil.nome],
-      numero: [this.perfil.numero],
-      cpf: [this.perfil.cpf],
-      cep: [this.perfil.cep],
-      estado: [this.perfil.estado],
-      cidade: [this.perfil.cidade],
-      endereco: [this.perfil.endereco],
-      complemento: [this.perfil.complemento]
+   ngOnInit() {
+   }
+   iniciarForm() {
+     this.formGroup = this.formBuilder.group({
+       nome: [this.perfil.nome],
+       numero: [this.perfil.numero],
+       cpf: [this.perfil.cpf],
+       cep: [this.perfil.cep],
+       estado: [this.perfil.estado],
+       cidade: [this.perfil.cidade],
+       endereco: [this.perfil.endereco],
+       complemento: [this.perfil.complemento]
 
 
-    })
-  }
+     })
+   }
 
   atualizar() {
 
@@ -103,9 +103,8 @@ export class PerfilclientePage implements OnInit {
 
         })
       })
-      }
+  }
 
 
 }
 
-  
