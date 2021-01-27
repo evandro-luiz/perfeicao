@@ -10,33 +10,33 @@ import { ConsultaService } from '../service/consulta.service';
   styleUrls: ['./homepodologo.page.scss'],
 })
 export class HomepodologoPage implements OnInit {
-  lista : Consulta[] = [];
-  id : string = "";
-  constructor(private consultaServ : ConsultaService,
-    private navCtrl : NavController,
-    private auth : AngularFireAuth) { 
-      
-    }
+  lista: Consulta[] = [];
+  id: string = "";
+  constructor(private consultaServ: ConsultaService,
+    private navCtrl: NavController,
+    private auth: AngularFireAuth) {
+
+  }
 
   ngOnInit() {
-    this.auth.currentUser.then(response=>{ // auth.currentUser -> Obten dados do usuario  
+    this.auth.currentUser.then(response => { // auth.currentUser -> Obten dados do usuario  
 
       this.id = response.uid;
-console.log(response)
-     
-    this.consultaServ.listaDeConsultas(response.uid).subscribe(response=>{
-      // O servidor respondeu
-      
-      this.lista = response;
-     
+      console.log(response)
 
-      
-    },err=>{
-      // erro
+      this.consultaServ.listaDeConsultas(response.uid).subscribe(response => {
+        // O servidor respondeu
+
+        this.lista = response;
+
+
+
+      }, err => {
+        // erro
+      })
     })
-  })
   }
-  visualizar(consulta){
-    this.navCtrl.navigateForward(['/detconsulta',consulta.id]);
+  visualizar(consulta) {
+    this.navCtrl.navigateForward(['/detconsulta', consulta.id]);
   }
-  }
+}

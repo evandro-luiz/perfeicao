@@ -10,37 +10,37 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./loginpodologo.page.scss'],
 })
 export class LoginpodologoPage implements OnInit {
-  formGroup : FormGroup; 
-  constructor( private formBuilder : FormBuilder,
-    private auth : AngularFireAuth,
-    private navCtrl : NavController,
-    private menuCtrl : MenuController,
-    private template : TemplateService
-    ) { this.iniciarForm(); }
+  formGroup: FormGroup;
+  constructor(private formBuilder: FormBuilder,
+    private auth: AngularFireAuth,
+    private navCtrl: NavController,
+    private menuCtrl: MenuController,
+    private template: TemplateService
+  ) { this.iniciarForm(); }
 
 
   ngOnInit() {
   }
-  cadpodologo(){
+  cadpodologo() {
     this.navCtrl.navigateForward(['/cadpodologo']);
-}
-esqsenha(){
-  this.navCtrl.navigateForward(['/esqsenha']);
-}
+  }
+  esqsenha() {
+    this.navCtrl.navigateForward(['/esqsenha']);
+  }
 
   login() {
 
     let user = this.formGroup.controls['username'].value;
     let pass = this.formGroup.controls['password'].value;
 
-    this.template.loading.then(load=>{ // mensagem carregando
+    this.template.loading.then(load => { // mensagem carregando
 
-      this.auth.signInWithEmailAndPassword(user,pass).then(data=>{ // envia firebase
+      this.auth.signInWithEmailAndPassword(user, pass).then(data => { // envia firebase
         // sucesso
         load.dismiss(); // encerrando mensagem
         this.menuCtrl.enable(true); // ativando menu
         this.navCtrl.navigateRoot(['homepodologo']); // redirecionar
-      }).catch(data=>{
+      }).catch(data => {
         //erro
         load.dismiss(); // encerrando mensagem
         this.template.myAlert("Erro ao atenticar");
@@ -49,9 +49,9 @@ esqsenha(){
     })
 
   }
-  iniciarForm(){
-    this.formGroup= this.formBuilder.group({
-      username : ['',[Validators.email] ],
+  iniciarForm() {
+    this.formGroup = this.formBuilder.group({
+      username: ['', [Validators.email]],
       password: ['', [Validators.required, Validators.minLength(13), Validators.maxLength(16)]]
     })
   }
