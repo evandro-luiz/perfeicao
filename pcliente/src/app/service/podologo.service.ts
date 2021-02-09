@@ -55,13 +55,23 @@ export class PodologoService {
         return from(new Observable(observe => { // converter para Observable
             this.firestore.collection('perfil-podologo').ref.orderBy("cidade")
                 .startAt(cidade).endAt(cidade + "\uf8ff").get().then(response => {
-                    let lista: Cliente[] = [];
+                    let lista: Podologo[] = [];
                     response.docs.map(obj => {
-                        // será repetido para cada registro, cada registro do Firestore se chama obj
-                        let cliente: Cliente = new Cliente();
-                        cliente.setData(obj.data());// obj.payload.doc.data() -> Dados do cliente
-                        cliente.id = obj.id; // inserindo ID
-                        lista.push(cliente); // adicionando o cliente na lista // push é adicionar
+                                                                        // será repetido para cada registro, cada registro do Firestore se chama obj
+                        let podologo: Podologo = new Podologo();
+                        podologo.setData(obj.data());// obj.payload.doc.data() -> Dados do cliente
+                        podologo.id = obj.id;
+                        this.fireStorage.storage.ref().child(`perfilp/${obj.id}.jpg`).getDownloadURL().then(response => {
+
+                            podologo.imagem = response;
+                            lista.push(podologo);
+                        }).catch(response => {
+                            this.fireStorage.storage.ref().child(`perfilp/perfil.jfif`).getDownloadURL().then(response => {
+                                podologo.imagem = response;
+                                lista.push(podologo);
+                            })
+                        })// inserindo ID
+                         // adicionando o cliente na lista // push é adicionar
                     });
                     observe.next(lista);
                 })

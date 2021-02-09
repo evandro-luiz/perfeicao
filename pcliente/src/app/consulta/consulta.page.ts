@@ -41,7 +41,7 @@ export class ConsultaPage implements OnInit {
     this.iduser = url.get('id');
     this.podologoServ.buscaPerfilPorId(this.iduser).subscribe(Response=>{
       this.podologo=Response;
-      
+      this.podologo.id = this.iduser;
       this.iniciarForm();
     })
     })
@@ -57,6 +57,8 @@ export class ConsultaPage implements OnInit {
       })
       })
       this.downloadImage();
+
+      
   }
   iniciarForm() {
     this.formGroup = this.formBuilder.group({
@@ -76,6 +78,7 @@ export class ConsultaPage implements OnInit {
     this.consultaServ.cadastrar(this.formGroup.value).subscribe(Response=>{
       console.log(Response)
       this.template.myAlert("Consulta Marcada com Sucesso");
+      
         this.navCtrl.navigateRoot(['homecliente']);
     })
  }

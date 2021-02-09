@@ -5,7 +5,7 @@ import { from, Observable } from "rxjs";
 
 @Injectable()
 export class PodologoService {
-    cliente: Podologo = new Podologo();
+    podologo: Podologo = new Podologo();
     constructor(private firestore: AngularFirestore) {
 
     }
@@ -76,7 +76,7 @@ export class PodologoService {
     cadastrar(cliente: any): Observable<any> {
         return from(new Observable(observe => {
             // add cria um novo documento
-            this.firestore.collection('perfil-podologo').add(cliente).then(response => {
+            this.firestore.collection('perfil-podologo').add(podologo).then(response => {
                 observe.next("Cadastrado com sucesso!");
             }, (err) => {
                 observe.error("Erro ao cadastrar!");
@@ -90,10 +90,10 @@ export class PodologoService {
             // .doc(id).snapshotChanges() -> Busca pelo id do documento
             this.firestore.collection('perfil-podologo').doc(id).snapshotChanges().subscribe(response => {
                 console.log(response);
-                let cliente: Podologo = new Podologo();
-                cliente.id = response.payload.id;
-                cliente.setData(response.payload.data());
-                observe.next(cliente);
+                let podologo: Podologo = new Podologo();
+                podologo.id = response.payload.id;
+                podologo.setData(response.payload.data());
+                observe.next(podologo);
 
             }, (err) => {
                 observe.error("Erro ao buscar o ID!");
@@ -104,10 +104,10 @@ export class PodologoService {
 
 
 
-    atualizar(cliente: any): Observable<any> {
+    atualizar(podologo: any): Observable<any> {
         return from(new Observable(observe => {
 
-            this.firestore.collection('perfil-podologo').doc(cliente.id).set(cliente).then(response => {
+            this.firestore.collection('perfil-podologo').doc(podologo.id).set(podologo).then(response => {
                 observe.next("Atualizado com sucesso!");
             }, (err) => {
                 observe.error("Erro ao atualizar!");
@@ -116,10 +116,10 @@ export class PodologoService {
         }));
     }
 
-    excluir(cliente: any): Observable<any> {
+    excluir(podologo: any): Observable<any> {
         return from(new Observable(observe => {
 
-            this.firestore.collection('perfil-podologo').doc(cliente.id).delete().then(response => {
+            this.firestore.collection('perfil-podologo').doc(podologo.id).delete().then(response => {
                 observe.next("Excluído com sucesso!");
             }, (err) => {
                 observe.error("Erro ao excluir!");
@@ -134,10 +134,10 @@ export class PodologoService {
             this.firestore.collection('perfil-podologo').doc(uid).snapshotChanges().subscribe(response => {
                 if (response.payload.exists !== false) {
 
-                    let cliente: Podologo = new Podologo();
-                    cliente.id = response.payload.id;
-                    cliente.setData(response.payload.data());
-                    observe.next(cliente);
+                    let podologo: Podologo = new Podologo();
+                    podologo.id = response.payload.id;
+                    podologo.setData(response.payload.data());
+                    observe.next(podologo);
                 }
 
             }, (err) => {

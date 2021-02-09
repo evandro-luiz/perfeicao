@@ -37,6 +37,7 @@ export class HomeclientePage implements OnInit {
     })
 
     this.downloadImage();
+    
   }
   avancar(podologo) {
     this.navCtrl.navigateForward(['/consulta', podologo.id]);
@@ -46,8 +47,10 @@ export class HomeclientePage implements OnInit {
     this.podologoServ.buscaPorlocal(this.local.value).subscribe(response => {
       this.lista = [];
       this.lista = response;
-
+      console.log(response);
+      
     });
+    
   }
   downloadImage() {
 
